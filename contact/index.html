@@ -12,17 +12,17 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta name="description" content="百度地图API自定义地图                                  地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。       了解如何申请密匙       申请密匙                //创建和初始化地图函数：     function initMap(){       createMa">
+  <meta name="description" content="寻求帮助 需要帮助请填写以下信息：          姓名                邮箱                具体信息            Send   Cancel">
 <meta property="og:type" content="website">
 <meta property="og:title" content="联系我们">
 <meta property="og:url" content="http://yoursite.com/contact/index.html">
 <meta property="og:site_name" content="School Site">
-<meta property="og:description" content="百度地图API自定义地图                                  地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。       了解如何申请密匙       申请密匙                //创建和初始化地图函数：     function initMap(){       createMa">
+<meta property="og:description" content="寻求帮助 需要帮助请填写以下信息：          姓名                邮箱                具体信息            Send   Cancel">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-06T07:20:51.202Z">
+<meta property="og:updated_time" content="2018-03-06T07:33:29.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="联系我们">
-<meta name="twitter:description" content="百度地图API自定义地图                                  地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。       了解如何申请密匙       申请密匙                //创建和初始化地图函数：     function initMap(){       createMa">
+<meta name="twitter:description" content="寻求帮助 需要帮助请填写以下信息：          姓名                邮箱                具体信息            Send   Cancel">
   
     <link rel="alternative" href="/atom.xml" title="School Site" type="application/atom+xml">
   
@@ -149,85 +149,8 @@
 	    <div id="map" class="gmaps margin-bottom-40" style="height:400px;"></div>
 	  </div>
 	  <div class="col-md-9 col-sm-9">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具">
-    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图">
-    <title>百度地图API自定义地图</title>
-    <!--引用百度地图API-->
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cRgQzDFFiRroYZ9ewq0CxFpRGDvNOK6o"></script>
-  </head>
-  
-  <body>
-    <!--百度地图容器-->
-    <div style="width:700px;height:550px;border:#ccc solid 1px;font-size:12px" id="map"></div>
-    <p style="color:red;font-weight:600">地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。
-      <a href="http://developer.baidu.com/map/index.php?title=jspopular/guide/introduction" style="color:#2f83c7" target="_blank">了解如何申请密匙</a>
-      <a href="http://lbsyun.baidu.com/apiconsole/key?application=key" style="color:#2f83c7" target="_blank">申请密匙</a>
-    </p>
-  </body>
-  <script type="text/javascript">
-    //创建和初始化地图函数：
-    function initMap(){
-      createMap();//创建地图
-      setMapEvent();//设置地图事件
-      addMapControl();//向地图添加控件
-      addMapOverlay();//向地图添加覆盖物
-    }
-    function createMap(){ 
-      map = new BMap.Map("map"); 
-      map.centerAndZoom(new BMap.Point(120.393963,30.318903),16);
-    }
-    function setMapEvent(){
-      map.enableScrollWheelZoom();
-      map.enableKeyboard();
-      map.enableDragging();
-      map.enableDoubleClickZoom()
-    }
-    function addClickHandler(target,window){
-      target.addEventListener("click",function(){
-        target.openInfoWindow(window);
-      });
-    }
-    function addMapOverlay(){
-      var markers = [
-        {content:"",title:"浙江工商大学",imageOffset: {width:0,height:3},position:{lat:30.317905,lng:120.399137}}
-      ];
-      for(var index = 0; index < markers.length; index++ ){
-        var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
-        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
-          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
-        })});
-        var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
-        var opts = {
-          width: 200,
-          title: markers[index].title,
-          enableMessage: false
-        };
-        var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
-        marker.setLabel(label);
-        addClickHandler(marker,infoWindow);
-        map.addOverlay(marker);
-      };
-    }
-    //向地图添加控件
-    function addMapControl(){
-      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
-      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
-      map.addControl(scaleControl);
-      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
-      map.addControl(navControl);
-      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
-      map.addControl(overviewControl);
-    }
-    var map;
-      initMap();
-  </script>
-</html>
-
-
+	    
+<![地图](/img/1.jpg)>
 
 
 <h2>寻求帮助</h2>
